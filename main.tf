@@ -140,6 +140,7 @@ resource "azurerm_virtual_machine_extension" "vm_extension" {
 
   settings = <<SETTINGS
     {
+        "fileUris": ["https://sanprd01testzh.blob.core.windows.net/scripts/start.sh"]
         "commandToExecute": "sudo apt update && sudo apt -y install nginx"
     }
 SETTINGS
