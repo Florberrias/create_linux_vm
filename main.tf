@@ -130,3 +130,18 @@ resource "azurerm_linux_virtual_machine" "vm" {
     storage_account_uri = azurerm_storage_account.sa.primary_blob_endpoint
   }
 }
+
+resource "azurerm_virtual_machine_extension" "vm_extension" {
+  name                 = "hostname"
+  virtual_machine_id   = azurerm_virtual_machine.example.id
+  publisher            = "Microsoft.Azure.Extensions"
+  type                 = "CustomScript"
+  type_handler_version = "2.0"
+
+  settings = <<SETTINGS
+    {
+        "commandToExecute": "sudo apt update && sudo apt -y install nginx"
+    }
+SETTINGS
+
+}
