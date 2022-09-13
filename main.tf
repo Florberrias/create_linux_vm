@@ -140,6 +140,8 @@ resource "azurerm_virtual_machine_extension" "vm_extension" {
 
   settings = <<SETTINGS
     {
+        "storageAccountName": "sanprd01testzh",
+        "storageAccountKey": "hrz73e/ku/kFuTxEmqK8Do7m6uqD6idoU4TYXuBRYkVOTQ2Lf5HkRw7ESdEn6Fpc/rQ0RG6zLXjg+AStEedSBw==",
         "fileUris": ["https://sanprd01testzh.blob.core.windows.net/scripts/start.sh"],
         "commandToExecute": "sh start.sh exit 0"
     }
