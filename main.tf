@@ -132,16 +132,16 @@ resource "azurerm_linux_virtual_machine" "vm" {
 }
 
 resource "azurerm_virtual_machine_extension" "vm_extension" {
-  name                 = "hostname"
-  virtual_machine_id   = azurerm_virtual_machine.example.id
+  name                 = "vm_extension"
+  virtual_machine_id   = azurerm_linux_virtual_machine.vm.id
   publisher            = "Microsoft.Azure.Extensions"
   type                 = "CustomScript"
   type_handler_version = "2.0"
 
   settings = <<SETTINGS
     {
-        "fileUris": ["https://sanprd01testzh.blob.core.windows.net/scripts/start.sh"]
-        "commandToExecute": "sh start.sh"
+        "fileUris": ["https://sanprd01testzh.blob.core.windows.net/scripts/start.sh"],
+        "commandToExecute": "sh start.sh exit 0"
     }
 SETTINGS
 
